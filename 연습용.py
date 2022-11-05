@@ -1,5 +1,6 @@
 name1 = input(str("A학생의 이름을 쓰시오"))
 old1 = int(input("A학생의 나이를 쓰시오"))
+
 grade1 = float(input("A학생의 학점를 쓰시오"))
 
 name2 = input("B학생의 이름을 쓰시오")
