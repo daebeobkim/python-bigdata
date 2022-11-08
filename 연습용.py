@@ -1,4 +1,5 @@
 name1 = input(str("A학생의 이름을 쓰시오"))
+
 old1 = int(input("A학생의 나이를 쓰시오"))
 
 
