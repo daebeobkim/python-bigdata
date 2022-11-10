@@ -1,49 +1,54 @@
-name1 = input(str("A학생의 이름을 쓰시오"))
-old1 = int(input("A학생의 나이를 쓰시오"))
+a = []
+count=0
+while True:
+    per = input('메뉴를 입력하시오')
+    if per == 'quit':
+            break
+    while True:
+        
+        if per == 'add':
+            count += 1
+            a.append([input(str('이름을 입력하시오')),input('전화번호를 입력하시오'),input('메일을 입력하시오'),input('주소를 입력하시오')])
+            break
+        elif per == 'all':
+            a.sort()
+            for i in range(count):
+                print('%s' %a[i])
+            break
+        elif per == 'search':
+            name = input('이름입력시 정보 출력')
+            for i in range(count):
+                if name == a[i][0]:
+                    print('%s' %(a[i]))
+                    break
+            if name != a[i][0]:
+                print("해당이름이 없습니다")
+                break
+            break
+        elif per == 'change':
+            index = 0
+            name = input('정보를 수정하고싶은 사용자의 이름을 입력하시오')
+            for i in range(count):
+                if name != a[i][0]:
+                    index = 1
+                    continue
+                elif name == a[i][0]:
+                    del a[i]
+                    a.append([input('이름을 입력하시오'),input('전화번호를 입력하시오'),input('메일을 입력하시오'),input('주소를 입력하시오')])
+                    index = 0
+                    break
 
-
-grade1 = float(input("A학생의 학점를 쓰시오"))
-
-name2 = input("B학생의 이름을 쓰시오")
-old2 = int(input("B학생의 나이를 쓰시오"))
-grade2 = float(input("B학생의 학점를 쓰시오"))
-
-name3 = input("B학생의 이름을 쓰시오")
-old3 = int(input("B학생의 나이를 쓰시오"))
-grade3 = float(input("B학생의 학점를 쓰시오"))
-
-oldall=old1+old2+old3
-gradeall = grade1+grade2+grade3
-
-print("평균 나이는 %0.1f" %(oldall/3))
-print("평균 학점은 %0.1f" %(gradeall/3))
-
-maxold = old1
-
-if old2 > maxold:
-    maxold = old2
-if old3 > maxold:
-    maxold = old3
-
-
-maxgrade = grade1
-
-if grade2 > maxgrade:
-    maxgrade = grade2
-if grade3 > maxgrade:
-    maxgrade = grade3
-
-    
-if maxold == old1:
-    print("최고 나이 : %s" %name1)
-if maxold == old2:
-    print("최고 나이 : %s" %name2)
-if maxold == old3:
-    print("최고 나이 : %s" %name3)
-
-if maxgrade == grade1:
-    print("최고 학점 : %s" %name1)
-if maxgrade == grade2:
-    print("최고 학점 : %s" %name2)
-if maxgrade == grade3:
-    print("최고 학점 : %s" %name3)
+            if index == 1:
+                print("해당 이름이 없습니다.")
+        elif per == 'delete':
+            name = input('전화번호를 삭제 할 사용자의 이름을 입력하시오')
+            for i in range(count):
+                if name == a[i][0]:
+                    a[i][1] = ("삭제된 전화번호")
+                    break
+            if name != a[i][0]:
+                print("해당이름이 없습니다")
+        else:
+            print("메뉴를 다시 선택하시오")
+            break
+        break
