@@ -12,6 +12,7 @@ while True:
             break
         elif per == 'all':
             
+            
             a.sort()
             for i in range(count):
                 print('%s' %a[i])
