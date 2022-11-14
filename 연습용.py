@@ -11,6 +11,8 @@ while True:
             a.append([input(str('이름을 입력하시오')),input('전화번호를 입력하시오'),input('메일을 입력하시오'),input('주소를 입력하시오')])
             break
         elif per == 'all':
+            
+            
             a.sort()
             for i in range(count):
                 print('%s' %a[i])
