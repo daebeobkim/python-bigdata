@@ -1,6 +1,9 @@
-def getCAGR(first,last,years):
-    return (last/first)**(1/years)-1
+from pandas_datareader import data as pdr
+import yfinance as yf
+yf.pdr_override()
 
-cagr = getCAGR(65300,2669000,20)
+sec = pdr.get_data_yahoo('005930.KS', start='2018-05-04')
+msft = pdr.get_data_yahoo('hsft',start='2018-05-04')
 
-print("SEC CAGR : {:.2%}".format(cagr))
+print(sec.head())
+#내일 추가 코드해석하기
