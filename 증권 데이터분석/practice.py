@@ -132,7 +132,7 @@ def main():
 
     while(True):
 
-        with open("C:/Temp/book.csv","r") as file:
+        with open("book.csv","r") as file:
 
             lines = csv.reader(file)
 
