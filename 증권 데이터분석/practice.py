@@ -1,68 +1,166 @@
-a = []
-count = 0
-def number_command(i):
-    if i == 'add':
-        number_add()
-    elif i == 'all':
-        number_all()
-    elif i == 'search':
-        number_search()
-    elif i == 'change':
-        number_change()
-    elif i == 'delete':
-        number_delete()
-    elif i == 'quit':
-        print("전화번호부를 종료합니다.")
-        exit(1)
 
-def number_add():
-    global count
-    count += 1
-    a.append([input(str('이름을 입력하시오')),input('전화번호를 입력하시오'),input('메일을 입력하시오'),input('주소를 입력하시오')])
+import csv
+function_list = ["book", "writer", "genre", "add", "end"]
+
+# 기능 입력
+
+def print_function():
+
+    print("book : 도서 검색")
+
+    print("writer : 저자 검색")
+
+    print("genre : 장르 검색")
+
+    print("add : 추가 입력")
+
+    print("end : 종료")
+
+    function = input("기능을 입력해 주세요! : ")
+
+    print("=====================")
+
+    return function
+# 도서 검색
+
+def book():
+
+        search_book = input("찾고 싶은 도서의 이름을 입력해 주세요 : ")
+
+        for i in range(0, len(book_list)):
+
+            if search_book == book_list[i][1]:
+
+                print("저자 : ", book_list[i][2])
+
+                print("장르 : ", book_list[i][3])
+
+                print("출판사 : ", book_list[i][4])
+
+                print("=====================")
+
+                break
+
+        else:
+
+            print("존재하지 않는 도서입니다!")
+
+            print("=====================")
+
+# 저자 검색
+
+def writer():
+
+        search_writer = input("찾고 싶은 저자를 입력해 주세요 : ")
+
+        count=0
+
+        for i in range(0, len(book_list)):
+
+            if search_writer == book_list[i][2]:
+
+                print("도서명 : ", book_list[i][1])
+
+                print("장르 : ", book_list[i][3])
+
+                print("출판사 : ", book_list[i][4])
+
+                print("=====================")
+
+                count+=1
+
+            elif (i==len(book_list)-1 and search_writer!=book_list[i][2] and count==0):
+
+                print("존재하지 않는 저자입니다!")
+
+                print("=====================")
 
 
-def number_all():
-    a.sort()
-    for i in range(count):
-        print('%s' %a[i])
-    
-def number_search():
-    name = input('이름입력시 정보 출력')
-    for i in range(count):
-        if name == a[i][0]:
-            print('%s' %(a[i]))
-            break
-    if name != a[i][0]:
-        print("해당이름이 없습니다")
+# 장르 검색
 
+def genre():
 
-def number_change():
-    index = 0
-    name = input('정보를 수정하고싶은 사용자의 이름을 입력하시오')
-    for i in range(count):
-        if name != a[i][0]:
-            index = 1
-            continue
-        elif name == a[i][0]:
-            del a[i]
-            a.append([input('이름을 입력하시오'),input('전화번호를 입력하시오'),input('메일을 입력하시오'),input('주소를 입력하시오')])
-            index = 0
-            break
-    if index == 1:
-        print("해당 이름이 없습니다.")
+    search_genre = input("찾고 싶은 장르를 입력해 주세요 : ")
 
-def number_delete():
-    name = input('전화번호를 삭제 할 사용자의 이름을 입력하시오')
-    for i in range(count):
-        if name == a[i][0]:
-            a[i][1] = ("삭제된 전화번호")
-            break
-    if name != a[i][0]:
-        print("해당이름이 없습니다")
+    count=0
 
-print("---------------------------전화번호부 명령어---------------------------")
-print("[add(추가),all(출력),quit(종료),search(검색),change(수정),delete(삭제)]")
-print("-----------------------------------------------------------------------")
-while (True):
-    i = input('메뉴를 입력하시오')
-    number_command(i)           
+    for i in range(0, len(book_list)):
+
+        if search_genre == book_list[i][3]:
+
+            print("도서명 : ", book_list[i][1])
+
+            print("저자 : ", book_list[i][2])
+
+            print("출판사 : ", book_list[i][4])
+
+            print("=====================")
+
+            count+=1
+
+        elif (i==len(book_list)-1 and search_genre!=book_list[i][3] and count==0):
+
+            print("존재하지 않는 장르입니다!")
+
+            print("=====================")
+
+# 추가 입력
+
+def add():
+
+    with open("book.csv","a", newline='') as file:
+
+        lines = csv.writer(file)
+
+        number = len(book_list)
+
+        new_book = input("도서명을 입력해 주세요")
+
+        new_writer = input("저자명을 입력해 주세요")
+
+        new_genre = input("장르를 입력해 주세요")
+
+        publisher = input("출판사를 입력해 주세요")
+
+        new_list = [number, new_book, new_writer, new_genre, publisher]
+
+        lines.writerow(new_list)
+
+# 메인 함수
+
+def main():
+
+    while(True):
+
+        with open("C:/Temp/book.csv","r") as file:
+
+            lines = csv.reader(file)
+
+            global book_list
+
+            book_list = list(lines)
+
+            function = print_function()
+
+            if function == function_list[0]:
+
+                book()
+
+            elif function == function_list[1]:
+
+                writer()
+
+            elif function == function_list[2]:
+
+                genre()
+
+            elif function == function_list[3]:
+
+                add()
+
+            elif function == function_list[4]:
+
+                break
+
+# 실행
+main()
