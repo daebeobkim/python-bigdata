@@ -12,7 +12,7 @@ def print_function():
 
 def book():
         search_book = input("찾고 싶은 도서의 이름을 입력해 주세요 : ")
-        for i in range(0, len(book_list)):
+        for i in range(len(book_list)):
             if search_book == book_list[i][1]:
                 print("저자 : ", book_list[i][2])
                 print("장르 : ", book_list[i][3])
@@ -25,7 +25,7 @@ def book():
 def writer():
         search_writer = input("찾고 싶은 저자를 입력해 주세요 : ")
         count=0
-        for i in range(0, len(book_list)):
+        for i in range(len(book_list)):
             if search_writer == book_list[i][2]:
                 print("도서명 : ", book_list[i][1])
                 print("장르 : ", book_list[i][3])
@@ -38,7 +38,7 @@ def writer():
 def genre():
     search_genre = input("찾고 싶은 장르를 입력해 주세요 : ")
     count=0
-    for i in range(0, len(book_list)):
+    for i in range(len(book_list)):
         if search_genre == book_list[i][3]:
             print("도서명 : ", book_list[i][1])
             print("저자 : ", book_list[i][2])
