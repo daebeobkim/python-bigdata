@@ -65,6 +65,7 @@ def main():
             lines = csv.reader(file)
             global book_list
             book_list = list(lines)
+            print(book_list)
             function = print_function()
             if function == lists[0]:
                 book()
