@@ -4,6 +4,7 @@
 aa = input('문자열을 입력하시오: ')
 bb = []
 result = []
+
 count = 0
 
 ### 메인 항목
