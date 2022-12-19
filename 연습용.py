@@ -1,4 +1,5 @@
 a = []
+#계획짜기
 count=0 #219125112 김대법
 while True:
     per = input('메뉴를 입력하시오')
