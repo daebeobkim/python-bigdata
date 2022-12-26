@@ -8,12 +8,12 @@
     </head>
 <body>
     
-    <h1>오늘의 강릉날씨</h1>
+    <h1>오늘의 서울날씨</h1>
     <button oncick="getWeather()">날씨 가져오기</button>
     <p id="temperature"></p>
 <script>
     function getWeather(){
-        fetch('https://goweather.herokuapp.com/weather/%7Bcitym')
+        fetch('https://goweather.herokuapp.com/weather/seoul')
         .then((response) => response.json())
         .then((data) => {
             document.getElementById('temperature').innerHTML = data['temperature'];
