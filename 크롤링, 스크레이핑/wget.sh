@@ -15,3 +15,7 @@ $ wget -r -l1 -A jpg,png,gif http://example.com/
 -A옵션을 사용하면 확장자가 JPG인 파일만 내려받을 수 있음
 여러개 일때는 위처럼 사용
 """
+$ wget -r -l1 -R jpg,png,gif http://example.com/
+"""
+-R옵션 사용시 제외
+"""
