@@ -19,3 +19,7 @@ $ wget -r -l1 -R jpg,png,gif http://example.com/
 """
 -R옵션 사용시 제외
 """
+$ wget -r -l1 -w3 -np -R jpg,png,gif http://example.com/
+"""
+부모디렉터리 -np 이미지 파일 -R 옵션으로 제외
+"""
