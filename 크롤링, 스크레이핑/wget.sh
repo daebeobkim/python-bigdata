@@ -23,6 +23,7 @@ $ wget -r -l1 -w3 -np -R jpg,png,gif http://example.com/
 """
 부모디렉터리 -np 이미지 파일 -R 옵션으로 제외
 """
+--------------하둡-----------------------
 $ sudo apt-get install openjdk-8-jdk
 """
 자바 설치 명령어
