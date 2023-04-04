@@ -1,11 +1,12 @@
 import numpy as np
 import pickle
 import pandas as pd
-filename = pd.read_csv('C:/Users/rlaeo/OneDrive/바탕 화면/LoadingDatasets/load.csv')
-cols = None
-data = []
-with open(filename) as f:
-    for line in f.readlines():
-        vals = line.replace("\n","").split(",")
-        print(vals)
-        
+import matplotlib.pyplot as plt
+d1 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_1d.txt")
+d2 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_2d.txt")
+d3 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_curve.txt")
+print(d1.shape,d2.shape)
+
+
+plt.scatter(d2[:,0],d2[:,1])
+plt.show()
