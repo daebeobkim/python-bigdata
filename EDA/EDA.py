@@ -1,42 +1,21 @@
 import numpy as np
+import pickle
+import pandas as pd
+import matplotlib.pyplot as plt
+d1 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_1d.txt")
+d2 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_2d.txt")
+d3 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_curve.txt")
+mean, std = np.mean(d1), np.std(d1)
+z_score = np.abs((d1-mean)/std)
+threshold = 3
+good = z_score < threshold
+print(f"Rejection {(~good).sum()} points")# ~: 결과값 뒤집기
+from scipy.stats import norm
+print(f"z-score of 3 corresponds to a prob of {100 * 2 * norm.sf(threshold):0.2f}%")
+visual_scatter = np.random.normal(size=d1.size)
+plt.scatter(d1[good], visual_scatter[good], s=2, label="Good", color = "#4CAF50")
+plt.scatter(d1[~good], visual_scatter[~good], s=2, label='Bad', color = '#F44336')
+plt.legend()
 
-def calculate_cov_matrix():
-    data = [[2, 20],
-            [3, 24],
-            [6, 36],
-            [8, 47],
-            [2.6, 22],
-            [4.8, 32],
-            [7, 47],
-            [4, 42],
-            [2, 21],
-            [2.2, 21],
-            [3.8, 30],
-            [2.4, 25],
-            [2.6, 18],
-            [5.4, 38],
-            [5.1, 28]
-            ]
-    nData = len(data)
-
-    x = np.array(data)
-    x_mean = x
-    x_mean[:, 0] = x[:, 0] - np.mean(x[:, 0])
-    x_mean[:, 1] = x[:, 1] - np.mean(x[:, 1])
-
-    print('mean adjust of data')
-    print(x_mean)
-
-    res = x_mean.T @ x_mean / nData
-
-    print('\n')
-    print('covariance matrix(from definition):')
-    print(res)
-
-    c = np.cov(x.T, bias=True)
-    print('\n')
-    print('covariance matrix(python function):')
-    print(c)
-
-if __name__ == '__main__':
-    calculate_cov_matrix()
+plt.show()
+plt.plot
