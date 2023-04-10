@@ -10,7 +10,5 @@ dataset = pd.DataFrame({
     "value":np.concatenate((d1,d2)),
     "type":np.concatenate((np.ones(d1.shape),np.zeros(d2.shape)))
 })
-dataset.info()
-
 sns.swarmplot(dataset["value"])
 sns.set()
