@@ -6,9 +6,10 @@ import pandas as pd
 d1 = np.loadtxt("C:/Users/rlaeo/Downloads/1D/example_1.txt")
 d2 = np.loadtxt("C:/Users/rlaeo/Downloads/1D/example_2.txt")
 
-dataset = pd.DataFrame({
-    "value":np.concatenate((d1,d2)),
-    "type":np.concatenate((np.ones(d1.shape),np.zeros(d2.shape)))
-})
-sns.swarmplot(dataset["value"])
-sns.set()
+cdf = np.linspace(1/d1.size,1,d1.size)
+sd1 = np.sort(d1)
+sd2 = np.sort(d2)
+plt.plot(sd1,cdf,label="D1 CDF")
+plt.plot(sd2,cdf,label="D2 CDF")
+plt.legend()
+plt.show()
