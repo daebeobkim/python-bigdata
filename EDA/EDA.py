@@ -5,9 +5,13 @@ import matplotlib.pyplot as plt
 d1 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_1d.txt")
 d2 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_2d.txt")
 d3 = np.loadtxt("C:/Users/rlaeo/Downloads/Outliers (1)/outlier_curve.txt")
-print(d1.shape,d2.shape)
 
-plt.scatter(d1,np.random.normal(7,0.2,size=d1.size), s=1, alpha=0.5)
-#  random.normal 함수를 이용해 7을 평균값으로 하고 0.2를 표준편차로 하는 정규분포를 따르는 난수를 생성
-plt.scatter(d2[:,0],d2[:,1])
+
+xs,ys = d3.T #T를 붙혀 치환할 수 있도록 만듦
+p = np.polyfit(xs,ys,deg=5)  #np.polyfit을 입력해 다항식을 얻음, 5차 다항식이 되도록 deg=5를 입력, 이걸로 x값,x제곱값,x세제곱 등을 구할 수 있음
+#y값을 다시 얻고자 하거나 다항식을 표본으로 추출하고자 한다면 np.polyval을 사용
+ps = np.polyval(p,xs)#을 입력하고 p,xs를 전달
+plt.plot(xs,ys,".",label="Data")
+plt.plot(xs,ps,label="Bad poly fit")
+plt.legend()
 plt.show()
